@@ -6,11 +6,16 @@
 @section('content')
     <div class="space-y-6">
         <div class="bg-white rounded-lg shadow p-6">
-            <div class="text-center">
-                <p class="text-sm uppercase text-slate-500">PEMERINTAH DESA NIGHTCITY</p>
-                <h1 class="text-2xl font-semibold text-slate-900">Laporan Rekomendasi Prioritas Bansos</h1>
-                <p class="mt-2 text-sm text-slate-500">Hasil perhitungan TOPSIS untuk menentukan prioritas penerima bantuan sosial</p>
-                <p class="mt-1 text-sm text-slate-500">Tanggal: {{ now()->format('d F Y') }}</p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div class="text-center sm:text-left">
+                    <p class="text-sm uppercase text-slate-500">PEMERINTAH DESA NIGHTCITY</p>
+                    <h1 class="text-2xl font-semibold text-slate-900">Laporan Rekomendasi Prioritas Bansos</h1>
+                    <p class="mt-2 text-sm text-slate-500">Hasil perhitungan TOPSIS untuk menentukan prioritas penerima bantuan sosial</p>
+                    <p class="mt-1 text-sm text-slate-500">Tanggal: {{ now()->format('d F Y') }}</p>
+                </div>
+                <div class="flex justify-center sm:justify-end">
+                    <a href="{{ route('topsis.report.pdf') }}" class="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">Cetak PDF</a>
+                </div>
             </div>
         </div>
 

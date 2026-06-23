@@ -42,6 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/topsis', [TopsisController::class, 'index'])->name('topsis.index');
     Route::get('/topsis/report', [TopsisController::class, 'report'])->name('topsis.report');
+    Route::get('/topsis/report/pdf', [TopsisController::class, 'exportReportPdf'])->name('topsis.report.pdf');
     Route::get('/topsis/export/pdf', [TopsisController::class, 'exportPdf'])->name('topsis.export.pdf');
     Route::get('/topsis/export/excel', [TopsisController::class, 'exportExcel'])->name('topsis.export.excel');
 

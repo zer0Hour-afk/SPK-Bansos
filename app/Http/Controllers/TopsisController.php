@@ -32,6 +32,19 @@ class TopsisController extends Controller
         return $pdf->download($filename);
     }
 
+    public function exportReportPdf()
+    {
+        $data = $this->prepareTopsisData();
+        if ($data === null) {
+            return redirect()->route('dashboard')->with('error', 'Data Kriteria atau Penilaian Warga masih kosong.');
+        }
+
+        $filename = 'laporan_resmi_topsis_' . now()->format('Ymd_His') . '.pdf';
+        $pdf = Pdf::loadView('topsis.report_pdf', $data)->setPaper('a4', 'portrait');
+
+        return $pdf->download($filename);
+    }
+
     public function exportExcel()
     {
         $data = $this->prepareTopsisData();
