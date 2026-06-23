@@ -11,9 +11,7 @@ use Illuminate\View\View;
 
 class UserManagementController extends Controller
 {
-    /**
-     * Display a listing of all users (Admin only).
-     */
+
     public function index(Request $request): View
     {
         $this->authorize('viewAny', User::class);
@@ -30,9 +28,6 @@ class UserManagementController extends Controller
         return view('user-management.index', compact('users', 'search'));
     }
 
-    /**
-     * Show the form for editing a user's role.
-     */
     public function editRole(User $user): View
     {
         $this->authorize('update', $user);
@@ -42,9 +37,6 @@ class UserManagementController extends Controller
         return view('user-management.edit-role', compact('user', 'availableRoles'));
     }
 
-    /**
-     * Update user's role (Admin only).
-     */
     public function updateRole(UpdateUserRoleRequest $request, User $user): RedirectResponse
     {
         $this->authorize('update', $user);
@@ -55,9 +47,6 @@ class UserManagementController extends Controller
                        ->with('status', 'Peran pengguna berhasil diperbarui');
     }
 
-    /**
-     * Show user profile (for viewing user details).
-     */
     public function show(User $user): View
     {
         $this->authorize('view', $user);

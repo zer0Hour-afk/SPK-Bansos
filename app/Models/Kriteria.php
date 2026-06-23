@@ -9,7 +9,7 @@ class Kriteria extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id']; // Mengizinkan semua kolom diisi kecuali ID
+    protected $guarded = ['id'];
 
     public function penilaians()
     {

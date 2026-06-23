@@ -10,9 +10,6 @@ use Illuminate\Http\Request;
 
 class PenilaianController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $wargas = Warga::orderBy('nama')->get();

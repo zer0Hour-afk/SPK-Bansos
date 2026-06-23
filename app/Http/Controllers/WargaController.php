@@ -8,26 +8,18 @@ use Illuminate\Http\Request;
 
 class WargaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $wargas = Warga::orderBy('nama')->get();
         return view('warga.index', compact('wargas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('warga.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -40,17 +32,11 @@ class WargaController extends Controller
         return redirect()->route('warga.index')->with('success', 'Data warga berhasil ditambahkan.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Warga $warga)
     {
         return view('warga.edit', compact('warga'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Warga $warga)
     {
         $validated = $request->validate([
@@ -63,9 +49,6 @@ class WargaController extends Controller
         return redirect()->route('warga.index')->with('success', 'Data warga berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Warga $warga)
     {
         $warga->delete();

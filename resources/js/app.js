@@ -6,7 +6,6 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-// Theme (dark / light) toggle
 function applyTheme(theme) {
 	const root = document.documentElement;
 	if (theme === 'dark') {
@@ -16,7 +15,6 @@ function applyTheme(theme) {
 	}
 }
 
-// initialize theme from localStorage or system preference
 (function () {
 	try {
 		const stored = localStorage.getItem('theme');
@@ -27,7 +25,6 @@ function applyTheme(theme) {
 			applyTheme(prefersDark ? 'dark' : 'light');
 		}
 	} catch (e) {
-		// ignore
 	}
 })();
 
@@ -38,27 +35,22 @@ window.toggleTheme = function () {
 		const next = isDark ? 'light' : 'dark';
 		applyTheme(next);
 		localStorage.setItem('theme', next);
-		// update any theme icons
 		document.querySelectorAll('[data-theme-toggle]').forEach(function (el) {
 			el.dataset.theme = next;
 		});
 	} catch (e) {
-		// ignore
 	}
 };
 
-// Update theme icon state on load
 document.addEventListener('DOMContentLoaded', function () {
 	try {
 		const root = document.documentElement;
 		const isDark = root.classList.contains('dark');
 		document.querySelectorAll('[data-theme-toggle]').forEach(function (el) {
 			el.dataset.theme = isDark ? 'dark' : 'light';
-			// set icon content
 			el.innerHTML = isDark ? sunIcon() : moonIcon();
 		});
 
-		// set icon for any theme toggle buttons when theme changes
 		const observer = new MutationObserver(function () {
 			const dark = document.documentElement.classList.contains('dark');
 			document.querySelectorAll('[data-theme-toggle]').forEach(function (el) {
@@ -78,7 +70,6 @@ function moonIcon() {
 	return '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
 }
 
-// Accessibility: font size and high contrast
 window.toggleLargeText = function () {
 	try {
 		const root = document.documentElement;
@@ -95,7 +86,6 @@ window.toggleHighContrast = function () {
 	} catch (e) {}
 };
 
-// restore accessibility prefs
 (function () {
 	try {
 		const large = localStorage.getItem('largeText');
