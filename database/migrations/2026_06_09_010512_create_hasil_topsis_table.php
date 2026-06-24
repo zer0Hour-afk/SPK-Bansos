@@ -6,19 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('hasil_topsis', function (Blueprint $table) {
             $table->id();
-            // Relasi ke tabel warga sebagai penerima hasil perhitungan [cite: 126]
             $table->foreignId('warga_id')->constrained('wargas')->onDelete('cascade'); 
-            $table->double('jarak_positif'); // Menyimpan akumulasi nilai Jarak Positif (D+) [cite: 155, 184]
-            $table->double('jarak_negatif'); // Menyimpan akumulasi nilai Jarak Negatif (D-) [cite: 155, 184]
-            $table->double('nilai_preferensi'); // Skor kedekatan relatif akhir (V) [cite: 156, 186]
-            $table->integer('ranking'); // Hasil urutan prioritas peringkat warga [cite: 157, 190]
+            $table->double('jarak_positif'); 
+            $table->double('jarak_negatif'); 
+            $table->double('nilai_preferensi'); 
+            $table->integer('ranking'); 
             $table->timestamps();
         });
     }

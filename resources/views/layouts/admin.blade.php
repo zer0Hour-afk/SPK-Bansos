@@ -25,6 +25,7 @@
         <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
             <a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded hover:bg-slate-700">Dashboard</a>
             @if(Auth::user()->isAdmin())
+                <a href="{{ route('users.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 bg-slate-700/50">Manajemen Pengguna</a>
                 <a href="{{ route('warga.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700">Data Warga</a>
                 <a href="{{ route('kriteria.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700">Kriteria & Bobot</a>
                 <a href="{{ route('penilaian.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700">Penilaian Alternatif</a>
@@ -49,8 +50,7 @@
             <div class="flex items-center gap-4">
                 <div class="text-sm text-gray-500 dark:text-slate-200">{{ Auth::user()->name ?? 'Administrator' }}</div>
                 <button type="button" aria-label="Toggle theme" onclick="toggleTheme()" data-theme-toggle class="p-2 rounded-md bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600 transition" data-theme="">
-                    <!-- icon set by JS -->
-                </button>
+                    </button>
                 <button type="button" aria-label="Increase text" onclick="toggleLargeText()" class="p-2 rounded-md bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600 transition">
                     A+
                 </button>
